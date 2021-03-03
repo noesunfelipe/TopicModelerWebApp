@@ -30,7 +30,8 @@ def uploader():
     if request.method == "POST":
         f = request.files['archivo']
         filename = secure_filename(f.filename)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        FPATHNAME = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        f.save(FPATHNAME)
         return show_tables(filename)
 
 
