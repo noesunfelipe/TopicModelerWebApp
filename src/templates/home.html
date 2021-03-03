@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Sube un archivo</h1>
+
+<p>Sube un archivo en formato excel (de extensión .xlsx):</p>
+<p>**El archivo debe contener una columna llamada "caso_numero" y otra llamada "reclamo_descripcion"</p>
+
+<form action="{{ url_for('uploader') }}" method="POST" enctype="multipart/form-data">
+  <label for="myfile">Selecciona el archivo:</label>
+  <input type="file" id = "ffile" name="archivo">
+  <input type="submit" value="Subir">
+</form>
+
+{% endblock %}

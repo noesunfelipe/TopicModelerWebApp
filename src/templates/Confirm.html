@@ -1,0 +1,38 @@
+{% extends "layout.html"%}
+
+{% block content %}
+<p>Esta aplicación busca modelar los tópicos dominantes del archivo de excel que fue dispuesto, y clasificar cada "documento" de acuerdo a sus respectivos tópicos dominantes.</p>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
+<div class=page>
+  <h5>Procesar la tabla</h5>
+
+  <form action="{{ url_for('set_params') }}", method="POST">
+    <label for="quantity">Procesar la tabla:</label>
+    <input type = "submit" value = "Click">
+    
+  </form>
+
+  {% for table in tables %}
+    <h2>{{titles[loop.index]}}</h2>
+    {{ table|safe }}
+
+</div>  
+
+
+
+
+  {% endfor %}
+
+  
+
+
+
+
+<!--<button> <a href="/my-link/">Click me</a></button>-->
+
+
+
+</html>
+
+
+{% endblock %}

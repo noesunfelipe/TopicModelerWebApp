@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<p>Archivo listo!</p>
+
+<!--<form action="{{ url_for('get_csv') }}", method="POST">  
+    <input type="submit" value="Descargar el archivo">
+</form>-->
+
+
+    <div class="container" align="left">
+         <a href="/get-csv/topico_dominante.csv" target="blank"><button class='btn btn-default'>Descargar!</button></a>
+    </div>
+
+{% endblock %}
+

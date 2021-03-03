@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<p>Acá te presentamos los resultados de modelar entre 2 y 10 tópicos para tus documentos.</p>
+
+<h1>Con esta información, puedes seleccionar el modelo y el número de tópicos que desees para ejecutar el algoritmo</h1>
+
+
+
+<div align="center"></div><img src="{{url_for('static', filename='Modelsplot.png')}}" /></div>
+<form action="{{ url_for('set_parametros_fin') }}", method="POST">
+    <input list="Modelos" name="Modelos">
+    <datalist id="Modelos">
+    <option value="lda_model">
+    <option value="ldamallet">
+    </datalist>
+    <label for="quantity">¿Cuántos tópicos deseas modelar?:</label>
+    <input type="number" id="NTopicsFin" name="NTopicsFin" min="2" max="15">
+    <input type="submit" value="Procesar la información">
+</form>
+
+{% endblock %}
+
