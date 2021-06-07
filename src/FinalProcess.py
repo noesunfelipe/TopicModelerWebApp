@@ -70,7 +70,7 @@ for filename in os.listdir(path):
     #Archivo = table_list.append(filename)
     pathname = path + str("/")+str(filename)
 
-df = pd.read_excel(os.path.join(pathname))
+df = pd.read_excel(os.path.join(pathname), engine='openpyxl')
 print(pathname)
 
 ID = df.caso_numero.values.tolist()

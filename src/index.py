@@ -37,7 +37,7 @@ def uploader():
 
 @app.route('/tables')
 def show_tables(filename):
-    data = pd.read_excel(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    data = pd.read_excel(os.path.join(app.config['UPLOAD_FOLDER'], filename), engine='openpyxl')
     data.set_index(['caso_numero'], inplace=True)
     data.index.name = None
     return render_template('Confirm.html', tables=[data.to_html(max_rows = 10)],  titles = ['caso_numero', 'reclamo_descripcion'])
