@@ -16,6 +16,10 @@ from pprint import pprint
 #corpus = p.corpus
 #id2word = p.id2word
 import index as ind
+from time import time
+
+t_inic = time()
+print("comenzaré a medir el tiempo de procesamiento_1")
 
 MALLETPATH = ind.app.config['MALLET_PATH']
 path = ind.app.config['UPLOAD_FOLDER']
@@ -102,5 +106,10 @@ if SelectedModel == "lda_model":
 
 else: 
     MalletModel_fin = MalletModelApplication(mallet_path, corpus, NTopics, id2word)
+
+
+t_fin = time()
+t_elap = t_fin-t_inic
+print("el tiempo de procesamiento_1 es: " + str(t_elap))
 
 os.system('python FinalProcess.py')

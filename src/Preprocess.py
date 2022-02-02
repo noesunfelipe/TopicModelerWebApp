@@ -22,6 +22,10 @@ import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.ERROR)
 import warnings
 warnings.filterwarnings("ignore",category=DeprecationWarning)
+from time import time
+#Para medir el tiempo de ejecución
+t_inic = time()
+print("comenzaré a medir el tiempo de preprocesamiento")
 
 # NLTK Stop words
 from nltk.corpus import stopwords
@@ -33,13 +37,13 @@ print(stop_words)
 import json
 
 #Midamos el tiempo de ejecución
-from time import time
+
 #enrutado
 import index as ind
 
 path = ind.app.config['UPLOAD_FOLDER']
 TempData = ind.app.config['TEMP_DATA']
-t_inic=time()
+
 
 #Enrutado del archivo excel
 import os 
@@ -122,8 +126,11 @@ trigram_mod = gensim.models.phrases.Phraser(trigram)
 #import spacy
 #from spacy_spanish_lemmatizer import SpacyCustomLemmatizer
 # Change "es" to the Spanish model installed in step 2
-import es_core_news_sm
-nlp = es_core_news_sm.load()
+
+#import es_core_news_sm
+#nlp = es_core_news_sm.load()
+import es_dep_news_trf
+nlp = es_dep_news_trf.load()
 #lemmatizer = SpacyCustomLemmatizer()
 #nlp = nlp.add_pipe(SpacyCustomLemmatizer, name="lemmatizer", after="tagger")
 
@@ -149,9 +156,12 @@ def lemmatization(texts, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
     return texts_out
 
 import spacy
-from spacy_spanish_lemmatizer import SpacyCustomLemmatizer
+import es_dep_news_trf
+#from spacy_spanish_lemmatizer import SpacyCustomLemmatizer
 # Change "es" to the Spanish model installed in step 2
-nlp = spacy.load("es_core_news_sm")
+#nlp = spacy.load("es_core_news_sm")
+nlp = spacy.load("es_dep_news_trf")
+
 #lemmatizer = SpacyCustomLemmatizer()
 #nlp.add_pipe(lemmatizer, name="lemmatizer", after="tagger")
 #for token in nlp(
@@ -212,6 +222,7 @@ ID2WORDPATH = os.path.join(TempData, "id2word.pkl")
 pickle.dump(id2word, open(ID2WORDPATH, "wb"))
 
 
-t_elap = time() - t_inic
-print (t_elap)
+t_fin = time()
+t_elap = t_fin-t_inic
+print("el tiempo de procesamiento es" + str(t_elap))
 os.system('python Rendimiento.py')

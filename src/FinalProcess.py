@@ -22,6 +22,11 @@ Plots = ind.app.config["STATIC"]
 os.environ['MALLET_HOME'] = MALLETPATH
 CSVPATH = ind.app.config["CLIENT_CSV"]
 
+from time import time
+
+t_inic = time()
+print("comenzaré a medir el tiempo de procesamiento_2")
+
 
 #Importar la data lematizada
 DLPATH = os.path.join(TempData, "DL.json")
@@ -193,3 +198,7 @@ df_dominant_topic.head()
 CSVFINALPATH = os.path.join(CSVPATH, "topico_dominante.csv")
 df_dominant_topic.to_csv(CSVFINALPATH)
 
+
+t_fin = time()
+t_elap = t_fin-t_inic
+print("el tiempo de procesamiento_2 es: " + str(t_elap))
