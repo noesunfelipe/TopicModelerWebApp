@@ -21,7 +21,9 @@ os.environ['MALLET_HOME'] = MALLETPATH
 #os.environ.update({'MALLET_HOME': r'MALLETPATH'})
 
 #mallet_path = 'C:/mallet-2.0.8/bin/mallet'
-mallet_path = os.path.join(MALLETPATH, 'bin', 'mallet.bat')
+#mallet_path = os.path.join(MALLETPATH, 'bin', 'mallet.bat')
+mallet_path = os.path.join(MALLETPATH, 'bin', 'mallet')
+#mallet_path = os.path("src/mallet-2.0.8/bin/mallet.bat")
 #src\mallet-2.0.8\bin\mallet
 if __name__ == '__main__':
     
@@ -44,12 +46,12 @@ if __name__ == '__main__':
     #ldamallet = pickle.load(open("C:/Users/Felipe/Desktop/TopicModelerApp - Python/src/TempData/ldamallet.pkl", "rb"))
     #lda_model = pickle.load(open("C:/Users/Felipe/Desktop/TopicModelerApp - Python/src/TempData/lda_model.pkl", "rb"))
 
-    print("me voy a pegar")
+    #print("me voy a pegar")
     #pprint(lda_model.print_topics())
-    print("me pegué")
+    #print("me pegué")
     #PerplejidadLDA_inic = lda_model.log_perplexity(corpus) ##Mientras menor el valor, mejor.
     #print(PerplejidadLDA_inic)
-    print("me pegaré de nuevo")
+    #print("me pegaré de nuevo")
     # Compute Perplexity
     #print('\nPerplexity LDA: ', lda_model.log_perplexity(corpus))  # a measure of how good the model is. lower the better.
 
@@ -59,7 +61,7 @@ if __name__ == '__main__':
     #coherence_model_lda = CoherenceModel(model=lda_model, texts=corpus, dictionary=id2word, coherence='c_v')
     #coherence_lda = coherence_model_lda.get_coherence()
     #print(coherence_lda)
-    print("Acá si que me pego")
+    #print("Acá si que me pego")
 
     ################# DEFINIENDO EL MODELO DE COHERENCIA GENÉRICO #################
     #from multiprocessing import Process, freeze_support
@@ -86,7 +88,7 @@ if __name__ == '__main__':
     #coherence_ldamallet = coherence_model_ldamallet.get_coherence()
     #pprint('\nPerplexity Mallet: ', coherence_ldamallet)
 
-    pprint("Ahora se presentará un gráfico que muestra los índices de coherencia de los distintos modelos para el modelado de entre 2 y 10 tópicos")
+    #pprint("Ahora se presentará un gráfico que muestra los índices de coherencia de los distintos modelos para el modelado de entre 2 y 10 tópicos")
 
     def compute_coherence_values(dictionary, corpus, texts, limit, start=2, step=3):
         """
@@ -164,9 +166,12 @@ if __name__ == '__main__':
     plt.legend(loc='best')
     plt.title("Evaluación de los modelos")
    
-    #plt.show()
+    plt.show()
+    Plots = ind.app.config["STATIC"]
     PLOTHPATH = os.path.join(Plots, "Modelsplot.png")
+    
     plt.savefig(PLOTHPATH)
+    #plt.savefig("src/static/Modelsplot.png")
     
     # Print the coherence scores
     for m, cv in zip(x, coherence_values):

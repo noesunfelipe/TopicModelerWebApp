@@ -30,7 +30,7 @@ matplotlib==3.3.4
 mpld3==0.5.2
 murmurhash==1.0.5
 nltk==3.5
-numpy==1.19.5
+numpy==1.22.1
 openpyxl==3.0.6
 packaging==20.9
 pandas==1.2.1

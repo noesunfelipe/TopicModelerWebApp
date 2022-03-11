@@ -63,7 +63,7 @@ id2word = pickle.load(open(ID2WORDPATH, "rb"))
 #corpus = corpora.MmCorpus("C:/Users/Felipe/Desktop/TopicModelerApp - Python/src/TempData/corpus.mm")
 NTopics = int(NTopics_String)
 
-print(corpus)
+#print(corpus)
 
 path = ind.app.config['UPLOAD_FOLDER']
 for filename in os.listdir(path):
@@ -71,7 +71,7 @@ for filename in os.listdir(path):
     pathname = path + str("/")+str(filename)
 
 df = pd.read_excel(os.path.join(pathname), engine='openpyxl')
-print(pathname)
+#print(pathname)
 
 ID = df.caso_numero.values.tolist()
 RecD = df.reclamo_descripcion.values.tolist()

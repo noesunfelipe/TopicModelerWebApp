@@ -22,7 +22,7 @@ path = ind.app.config['UPLOAD_FOLDER']
 TempData = ind.app.config['TEMP_DATA']
 Plots = ind.app.config["STATIC"]
 os.environ['MALLET_HOME'] = MALLETPATH
-mallet_path = os.path.join(MALLETPATH, 'bin', 'mallet.bat')
+mallet_path = os.path.join(MALLETPATH, 'bin', 'mallet')
 #Importar la data lematizada
 DLPATH = os.path.join(TempData, "DL.json")
 with open(DLPATH,'r') as f:
@@ -103,4 +103,4 @@ if SelectedModel == "lda_model":
 else: 
     MalletModel_fin = MalletModelApplication(mallet_path, corpus, NTopics, id2word)
 
-os.system('python FinalProcess.py')
+os.system('python src/FinalProcess.py')

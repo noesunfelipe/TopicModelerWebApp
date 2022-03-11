@@ -22,24 +22,27 @@ import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.ERROR)
 import warnings
 warnings.filterwarnings("ignore",category=DeprecationWarning)
+#Medición del rendimiento
+from time import time
+
+t_inic = time()
 
 # NLTK Stop words
 from nltk.corpus import stopwords
 stop_words = stopwords.words('spanish')
 stop_words.extend(['from', 'subject', 're', 'edu', 'use'])
-print(stop_words)
+#print(stop_words)
 
 #Como debemos usar algunos documentos de este archivo en otros, los mantendremos a través de json
 import json
 
-#Midamos el tiempo de ejecución
-from time import time
+
 #enrutado
 import index as ind
 
 path = ind.app.config['UPLOAD_FOLDER']
 TempData = ind.app.config['TEMP_DATA']
-t_inic=time()
+
 
 #Enrutado del archivo excel
 import os 
@@ -175,7 +178,7 @@ data_words_bigrams = make_bigrams(data_words_nostops)
 # Do lemmatization keeping only noun, adj, vb, adv
 data_lemmatized = lemmatization(data_words_bigrams, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV'])
 
-print(data_lemmatized[:2])
+#print(data_lemmatized[:2])
 
 DLPATH = os.path.join(TempData, "DL.json")
 with open(DLPATH, 'w') as f:
@@ -192,7 +195,7 @@ def preprocess(data_lemmatized):
     corpus = [id2word.doc2bow(text) for text in texts]
 
     # View
-    print(corpus[:1])
+    #print(corpus[:1])
     return id2word, corpus
 
 id2word, corpus = preprocess(data_lemmatized)
@@ -212,6 +215,8 @@ ID2WORDPATH = os.path.join(TempData, "id2word.pkl")
 pickle.dump(id2word, open(ID2WORDPATH, "wb"))
 
 
-t_elap = time() - t_inic
-print (t_elap)
-os.system('python Rendimiento.py')
+t_fin = time()
+t_elap = t_fin-t_inic
+#print("el tiempo de procesamiento es " + str(t_elap))
+
+os.system('python src/Rendimiento.py')
