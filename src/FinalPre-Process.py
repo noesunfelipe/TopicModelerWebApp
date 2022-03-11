@@ -16,6 +16,10 @@ from pprint import pprint
 #corpus = p.corpus
 #id2word = p.id2word
 import index as ind
+from time import time
+
+t_inic = time()
+print("comenzaré a medir el tiempo de procesamiento_1")
 
 MALLETPATH = ind.app.config['MALLET_PATH']
 path = ind.app.config['UPLOAD_FOLDER']

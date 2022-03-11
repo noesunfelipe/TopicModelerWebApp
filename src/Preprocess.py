@@ -125,8 +125,11 @@ trigram_mod = gensim.models.phrases.Phraser(trigram)
 #import spacy
 #from spacy_spanish_lemmatizer import SpacyCustomLemmatizer
 # Change "es" to the Spanish model installed in step 2
-import es_core_news_sm
-nlp = es_core_news_sm.load()
+
+#import es_core_news_sm
+#nlp = es_core_news_sm.load()
+import es_dep_news_trf
+nlp = es_dep_news_trf.load()
 #lemmatizer = SpacyCustomLemmatizer()
 #nlp = nlp.add_pipe(SpacyCustomLemmatizer, name="lemmatizer", after="tagger")
 
@@ -152,9 +155,12 @@ def lemmatization(texts, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
     return texts_out
 
 import spacy
-from spacy_spanish_lemmatizer import SpacyCustomLemmatizer
+import es_dep_news_trf
+#from spacy_spanish_lemmatizer import SpacyCustomLemmatizer
 # Change "es" to the Spanish model installed in step 2
-nlp = spacy.load("es_core_news_sm")
+#nlp = spacy.load("es_core_news_sm")
+nlp = spacy.load("es_dep_news_trf")
+
 #lemmatizer = SpacyCustomLemmatizer()
 #nlp.add_pipe(lemmatizer, name="lemmatizer", after="tagger")
 #for token in nlp(
